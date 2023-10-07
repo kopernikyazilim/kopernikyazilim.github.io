@@ -581,7 +581,7 @@ body {
 
 .contactcard {
   backdrop-filter: blur(50px);
-  padding: 25px;
+  padding: 50px;
   border-radius: 50px;
   background-image: linear-gradient(
     to bottom left,
@@ -657,7 +657,14 @@ body {
 
   .contactcard {
     margin: 25px;
-    width: 200px;
-    height: 200px;
+    width: 175px;
+    height: 175px;
+  }
+}
+
+@media only screen and (max-width: 560px) {
+  .topbaritem {
+    font-size: 14pt;
+    margin: 0px;
   }
 }
