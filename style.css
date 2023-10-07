@@ -256,12 +256,13 @@ body {
   justify-content: center;
   align-items: center;
   height: 15vh;
+  width: 100vw;
 }
 
 .topbaritem {
   text-align: center;
-  width: 15%;
-  margin: 0px 1%;
+  width: 150px;
+  margin: 0px 10px;
   font-size: 20pt;
   font-weight: 500;
   text-transform: uppercase;
@@ -452,17 +453,19 @@ body {
   box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.2);
 }
 
-.productioniconbox {
+.producticonbox {
   height: 200px;
   width: 200px;
   display: flex;
   justify-content: center;
+  align-items: center;
   margin-right: 25px;
 }
 
 .producticon {
   height: 200px;
   filter: drop-shadow(0px 0px 5px rgba(0, 0, 0, 0.3));
+  pointer-events: none;
 }
 
 .productname {
@@ -515,6 +518,7 @@ body {
   transition: transform 200ms ease-out;
   width: 175px;
   text-align: center;
+  user-select: none;
   &:not(:last-child) {
     margin-right: 30px;
   }
@@ -526,6 +530,7 @@ body {
   top: 25%;
   filter: drop-shadow(0px 0px 5px rgba(0, 0, 0, 0.3));
   z-index: 1;
+  pointer-events: none;
 }
 
 .card__bg {
@@ -599,8 +604,60 @@ body {
 
 .contactico {
   width: 100px;
+  pointer-events: none;
 }
 
 .contactheader {
   font-size: 24pt;
+}
+
+@media only screen and (max-width: 720px) {
+  .topbaritem {
+    font-size: 16pt;
+    width: 125px;
+  }
+
+  .motto {
+    font-size: 32pt;
+  }
+
+  .product {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+  }
+
+  .producticonbox {
+    margin: 10px 0px;
+  }
+
+  .productname {
+    font-size: 28pt;
+  }
+
+  .productdesc {
+    font-size: 12pt;
+  }
+
+  .cardouter {
+    margin: 10px;
+  }
+
+  .card {
+    width: 175px;
+    height: 250px;
+  }
+
+  .contactbox {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .contactcard {
+    margin: 25px;
+    width: 300px;
+    height: 200px;
+  }
 }
