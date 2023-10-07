@@ -611,14 +611,14 @@ body {
   font-size: 24pt;
 }
 
-@media only screen and (max-width: 720px) {
+@media only screen and (max-width: 320px) {
   .topbaritem {
-    font-size: 16pt;
-    width: 125px;
+    font-size: 12pt;
+    margin: 0px;
   }
 
   .motto {
-    font-size: 32pt;
+    font-size: 20pt;
   }
 
   .product {
@@ -657,7 +657,7 @@ body {
 
   .contactcard {
     margin: 25px;
-    width: 300px;
+    width: 200px;
     height: 200px;
   }
 }
