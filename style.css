@@ -427,15 +427,13 @@ body {
   .planet.sun {
     height: 400px;
     top: 5%;
-    left: 50%;
-    transform: translateX(-50%);
+    left: -5%;
   }
 
   .planet.earth {
     height: 175px;
     top: 75%;
-    left: 50%;
-    transform: translateX(-50%);
+    left: 25%;
   }
 
   .planet.moon {

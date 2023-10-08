@@ -70,15 +70,5 @@ setInterval(() => {
         const matrix = planetsStartTransforms[i].matrix.rotateSelf((Math.random() * MAX_PLANET_TURN) - MAX_PLANET_TURN / 2);
 
         planet.style.transform = `${matrix}`;
-
-        // if (transform.rotate) {
-        //     planet.style.transform = `rotate(0deg)`;
-        // }
-
-        // updatePlanetPosition(planet, { 
-        //     top: planetTopPositions[i].top + Math.random() * jiggleAmount, 
-        //     left: planetsStartTransforms[i].left + Math.random() * jiggleAmount, 
-        //     rotate: planetsStartTransforms[i].rotate + ((Math.random() * MAX_PLANET_TURN) - MAX_PLANET_TURN / 2)
-        // });
     }
 }, 1000);
