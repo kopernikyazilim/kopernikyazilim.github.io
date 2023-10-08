@@ -18,7 +18,7 @@ body {
   /* display: none; */
 }
 
-.blob-container.long {
+.blob-container.index {
   height: 330vh;
 }
 
@@ -486,16 +486,14 @@ body {
 
 .productname {
   font-size: 40px;
+  font-weight: 500;
 }
 
 .productdesc {
   font-size: 16pt;
 }
 
-/* TEST */
-
 .cards {
-  /* background-color: red; */
   border-radius: 15px;
   display: flex;
   text-align: left;
@@ -678,9 +676,55 @@ body {
   }
 }
 
-@media only screen and (max-width: 560px) {
+@media only screen and (max-width: 768px) {
+  .planet {
+    display: none;
+  }
+
+  .blob-container.index {
+    height: 365vh;
+  }
+
+  .blob-container.reference {
+    height: 130vh;
+  }
+
   .topbaritem {
     font-size: 14pt;
     margin: 0px;
+  }
+
+  .motto {
+    font-size: 24pt;
+  }
+
+  .product {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    line-height: 40px;
+  }
+
+  .producticonbox,
+  .contactico {
+    margin-bottom: 25px;
+  }
+
+  .productname,
+  .contactheader {
+    margin-bottom: 10px;
+    font-size: 28pt;
+  }
+
+  .contactbox {
+    flex-direction: column;
+    align-items: center;
+    margin-top: 5%;
+  }
+
+  .contactcard {
+    width: 200px;
+    height: 200px;
+    margin: 20px 0px;
   }
 }
