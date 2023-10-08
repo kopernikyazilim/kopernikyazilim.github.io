@@ -72,75 +72,79 @@ body {
 .planet.astro {
   height: 300px;
   left: 52.5%;
-  top: 45%;
+  top: 55%;
+  transition: 1s ease-out;
 }
 
 .planet.sun {
   height: 500px;
   left: 5%;
-  top: -10%;
+  top: 0%;
   transform: rotate(-10deg);
+  transition: 1.5s ease-in-out;
 }
 
 .planet.earth {
   height: 175px;
   left: 40%;
-  top: 40%;
+  top: 50%;
+  transition: 1.25s ease-out;
 }
 
 .planet.moon {
   height: 65px;
   left: 37.5%;
-  top: 40%;
+  top: 50%;
   transform: rotate(-200deg);
+  transition: 1.1s ease-out;
 }
 
 .planet.mars {
   height: 100px;
-  left: 52.5%;
-  top: 25%;
+  left: 57.5%;
+  top: 35%;
   transform: rotate(-30deg);
 }
 
 .planet.saturn {
   height: 150px;
   left: 70%;
-  top: 20%;
+  top: 30%;
   transform: rotate(-15deg);
 }
 
 .planet.neptune {
   height: 100px;
   left: 72.5%;
-  top: 90%;
+  top: 100%;
   transform: rotate(30deg);
 }
 
 .planet.uranus {
   height: 175px;
   left: 30%;
-  top: 75%;
+  top: 85%;
   transform: rotate(45deg);
 }
 
 .planet.jupiter {
   height: 150px;
   left: 80%;
-  top: 55%;
+  top: 65%;
   transform: rotate(15deg);
 }
 
 .planet.venus {
   height: 50px;
   left: 47.5%;
-  top: 90%;
+  top: 100%;
   transform: rotate(15deg);
 }
 
 .planet.mercury {
   height: 100px;
   left: 15%;
-  top: 75%;
+  top: 85%;
   transform: rotate(-15deg);
 }
 
@@ -148,69 +152,69 @@ body {
   transform: rotate(15deg);
   height: 25px;
   left: 55%;
-  top: 40%;
+  top: 50%;
 }
 .planet.star.two {
   transform: rotate(30deg);
   height: 25px;
   left: 45%;
-  top: 65%;
+  top: 85%;
 }
 
 .planet.star.three {
   transform: rotate(45deg);
   height: 25px;
-  left: 42.5%;
-  top: 30%;
+  left: 37.5%;
+  top: 35%;
 }
 
 .planet.star.four {
   transform: rotate(60deg);
   height: 25px;
   left: 30%;
-  top: 85%;
+  top: 95%;
 }
 
 .planet.star.five {
   transform: rotate(75deg);
   height: 25px;
   left: 32.5%;
-  top: 55%;
+  top: 65%;
 }
 
 .planet.star.six {
   transform: rotate(80deg);
   height: 25px;
   left: 72.5%;
-  top: 45%;
+  top: 55%;
 }
 
 .planet.star.seven {
   transform: rotate(105deg);
   height: 25px;
   left: 87.5%;
-  top: 95%;
+  top: 105%;
 }
 
 .planet.star.eight {
   transform: rotate(160deg);
   height: 25px;
   left: 7.5%;
-  top: 25%;
+  top: 35%;
 }
 
 .planet.star.nine {
   transform: rotate(135deg);
   height: 25px;
   left: 15%;
-  top: 95%;
+  top: 105%;
 }
 
 .planet.star.ten {
   transform: rotate(150deg);
   height: 25px;
   left: 55%;
-  top: 100%;
+  top: 110%;
 }
 
 .productbox {
@@ -224,13 +228,13 @@ body {
   display: flex;
   margin: 50px 0px;
   width: 50%;
-  backdrop-filter: blur(50px);
+  backdrop-filter: blur(10px);
   padding: 50px;
   border-radius: 50px;
   background-image: linear-gradient(
     to bottom left,
-    rgba(255, 255, 255, 0.1),
-    rgba(172, 15, 196, 0.05)
+    rgba(255, 255, 255, 0.2),
+    rgba(172, 15, 196, 0.1)
   );
   border: 1px solid rgba(255, 255, 255, 0.2);
   box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.2);
