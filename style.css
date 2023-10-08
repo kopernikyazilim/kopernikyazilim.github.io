@@ -27,7 +27,7 @@ body {
   overflow: visible;
   position: absolute;
   width: 100%;
-  filter: blur(15px);
+  /* filter: blur(15px); */
 }
 
 .shape-blob {
@@ -299,6 +299,7 @@ body {
   position: absolute;
   height: 100px;
   width: auto;
+  transition: 0.5s ease-in-out;
 }
 
 .planet.astro {
