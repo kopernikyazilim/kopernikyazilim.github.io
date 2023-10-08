@@ -95,7 +95,7 @@ body {
   height: 65px;
   left: 37.5%;
   top: 50%;
-  transform: rotate(-200deg);
+  transform: rotate(-180deg);
   transition: 1.1s ease-out;
 }
 

@@ -9,13 +9,17 @@ for(const planet of planets.children) {
 
     const top = parseFloat(style.getPropertyValue('top').replace("px", ""));
     const left = parseFloat(style.getPropertyValue('left').replace("px", ""));
-    let transform = style.getPropertyValue('transform');
-
-    transform = /matrix\(.*,.*,(.*),.*,.*\)/.exec(transform);
+    const transform = style.getPropertyValue('transform');
 
     let rotate = 0;
-    if (transform) {
-        rotate = parseFloat(transform[1]);
+    if (transform && transform !== "none") {
+
+        var values = transform.split('(')[1],
+        values = values.split(')')[0],
+        values = values.split(',');
+
+        const b = values[1];
+        rotate = Math.round(Math.asin(b) * (180 / Math.PI));
     }
 
     planetsTransforms.push({ top, left, rotate });
@@ -27,7 +31,7 @@ function updatePlanetPosition(planet, transform) {
     planet.style.top = `${transform.top}px`;
     
     if (transform.rotate) {
-        planet.style.transform = `rotate(${transform.rotate})`;
+        planet.style.transform = `rotate(${transform.rotate}deg)`;
     }
 }
 
@@ -50,30 +54,24 @@ window.addEventListener('scroll', (event) => {
         let maxMovement = (parallaxScroll / 10) * (window.innerHeight * 0.7);
 
         let movement = Math.min(maxMovement, window.scrollY);
-        
+
         updatePlanetPosition(planet, { top: planetsTransforms[i].top + movement, left: planetsTransforms[i].left });
     }
 });
 
-// const INTERVAL = 10;
-// let time = 0;
+const MAX_PLANET_TURN = 2;
 
-// setInterval(() => {
+setInterval(() => {
 
-//     for(let i = 0; i < planets.children.length; ++i) {
-//         const planet = planets.children[i];
+    for(let i = 0; i < planets.children.length; ++i) {
+        const planet = planets.children[i];
         
-//         const jiggleAmount = getPlanetAttribute(planet, "jiggleAmount");
-        
-//         if (jiggleAmount == 0) {
-//             continue;
-//         }
+        const jiggleAmount = getPlanetAttribute(planet, "jiggleAmount");
 
-//         // planetsTransforms[i].x += Math.cos(time / INTERVAL) * jiggleAmount;
-//         // planetsTransforms[i].y += Math.sin(time / INTERVAL) * jiggleAmount;
-
-//         updatePlanetPosition(planet, i);
-//     }
-
-//     time += INTERVAL;
-// }, INTERVAL);
+        updatePlanetPosition(planet, { 
+            top: planetsTransforms[i].top + Math.random() * jiggleAmount, 
+            left: planetsTransforms[i].left + Math.random() * jiggleAmount, 
+            rotate: planetsTransforms[i].rotate + ((Math.random() * MAX_PLANET_TURN) - MAX_PLANET_TURN / 2)
+        });
+    }
+}, 1000);
