@@ -1,7 +1,7 @@
 
 let planets = document.getElementById('planets');
 
-let planetsTransforms = [];
+let planetsStartTransforms = [];
 
 for(const planet of planets.children) {
 
@@ -11,29 +11,17 @@ for(const planet of planets.children) {
     const left = parseFloat(style.getPropertyValue('left').replace("px", ""));
     const transform = style.getPropertyValue('transform');
 
-    let rotate = 0;
+    let matrix;
     if (transform && transform !== "none") {
-
-        var values = transform.split('(')[1],
-        values = values.split(')')[0],
-        values = values.split(',');
-
-        const b = values[1];
-        rotate = Math.round(Math.asin(b) * (180 / Math.PI));
+        matrix = new WebKitCSSMatrix(transform);
+    } else {
+        matrix = new WebKitCSSMatrix([1, 0, 0, 1, 0, 0]);
     }
 
-    planetsTransforms.push({ top, left, rotate });
+    planetsStartTransforms.push({ top, left, matrix });
 }
 
-function updatePlanetPosition(planet, transform) {
-
-    planet.style.left = `${transform.left}px`;
-    planet.style.top = `${transform.top}px`;
-    
-    if (transform.rotate) {
-        planet.style.transform = `rotate(${transform.rotate}deg)`;
-    }
-}
+let planetTopPositions = planetsStartTransforms.map(({ top, left, matrix }) => top);
 
 function getPlanetAttribute(planet, attribute) {
     return parseInt(planet.attributes.getNamedItem(attribute).value);
@@ -51,11 +39,19 @@ window.addEventListener('scroll', (event) => {
             continue;
         }
 
-        let maxMovement = (parallaxScroll / 10) * (window.innerHeight * 0.7);
+        // Get document height from:
+        // https://stackoverflow.com/questions/1145850/how-to-get-height-of-entire-document-with-javascript
+        const body = document.body;
+        const html = document.documentElement;
+        const height = Math.max( body.scrollHeight, body.offsetHeight, html.clientHeight, html.scrollHeight, html.offsetHeight );
+
+        let maxMovement = (parallaxScroll / 100) * height;
 
         let movement = Math.min(maxMovement, window.scrollY);
 
-        updatePlanetPosition(planet, { top: planetsTransforms[i].top + movement, left: planetsTransforms[i].left });
+        planetTopPositions[i] = planetsStartTransforms[i].top + movement;
+
+        planet.style.top = `${planetTopPositions[i]}px`;
     }
 });
 
@@ -68,10 +64,21 @@ setInterval(() => {
         
         const jiggleAmount = getPlanetAttribute(planet, "jiggleAmount");
 
-        updatePlanetPosition(planet, { 
-            top: planetsTransforms[i].top + Math.random() * jiggleAmount, 
-            left: planetsTransforms[i].left + Math.random() * jiggleAmount, 
-            rotate: planetsTransforms[i].rotate + ((Math.random() * MAX_PLANET_TURN) - MAX_PLANET_TURN / 2)
-        });
+        planet.style.top = `${planetTopPositions[i] + Math.random() * jiggleAmount}px`;
+        planet.style.left = `${planetsStartTransforms[i].left + Math.random() * jiggleAmount}px`;
+        
+        const matrix = planetsStartTransforms[i].matrix.rotateSelf((Math.random() * MAX_PLANET_TURN) - MAX_PLANET_TURN / 2);
+
+        planet.style.transform = `${matrix}`;
+
+        // if (transform.rotate) {
+        //     planet.style.transform = `rotate(0deg)`;
+        // }
+
+        // updatePlanetPosition(planet, { 
+        //     top: planetTopPositions[i].top + Math.random() * jiggleAmount, 
+        //     left: planetsStartTransforms[i].left + Math.random() * jiggleAmount, 
+        //     rotate: planetsStartTransforms[i].rotate + ((Math.random() * MAX_PLANET_TURN) - MAX_PLANET_TURN / 2)
+        // });
     }
 }, 1000);
