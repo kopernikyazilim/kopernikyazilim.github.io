@@ -441,8 +441,8 @@ body {
   }
 
   .planet.astro {
-    height: 200px;
-    top: 55%;
+    height: 175px;
+    top: 75%;
     left: 50%;
   }
 
@@ -472,7 +472,7 @@ body {
   }
 
   .planet.mars {
-    height: 90px;
+    height: 85px;
     top: 92.5%;
     left: 75%;
     transform: rotate(15deg);
