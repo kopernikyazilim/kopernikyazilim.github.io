@@ -18,6 +18,13 @@ for(const planet of planets.children) {
         matrix = new WebKitCSSMatrix([1, 0, 0, 1, 0, 0]);
     }
 
+    matrix.m41 = 0;
+
+    if (window.innerWidth < 768 && (planet.className === "planet sun" || planet.className === "planet earth")) {
+        const width = parseInt(style.width.replace("px", ""));
+        matrix.m41 = -width / 2;
+    }
+
     planetsStartTransforms.push({ top, left, matrix });
 }
 
@@ -67,7 +74,7 @@ setInterval(() => {
         planet.style.top = `${planetTopPositions[i] + Math.random() * jiggleAmount}px`;
         planet.style.left = `${planetsStartTransforms[i].left + Math.random() * jiggleAmount}px`;
         
-        const matrix = planetsStartTransforms[i].matrix.rotateSelf((Math.random() * MAX_PLANET_TURN) - MAX_PLANET_TURN / 2);
+        const matrix = planetsStartTransforms[i].matrix.rotate((Math.random() * MAX_PLANET_TURN) - MAX_PLANET_TURN / 2);
 
         planet.style.transform = `${matrix}`;
     }
